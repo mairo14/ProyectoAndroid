@@ -11,19 +11,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:hint="Name"
         android:inputType="textPersonName"
-        android:text="Name"
-        tools:layout_editor_absoluteX="101dp"
-        tools:layout_editor_absoluteY="260dp" />
+        android:visibility="Name"
+        tools:layout_editor_absoluteX="100dp"
+        tools:layout_editor_absoluteY="244dp" />
 
     <EditText
         android:id="@+id/Password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:hint="Email"
         android:inputType="textPassword"
-        tools:layout_editor_absoluteX="102dp"
-        tools:layout_editor_absoluteY="325dp" />
+        tools:layout_editor_absoluteX="100dp"
+        tools:layout_editor_absoluteY="321dp" />
 
     <Button
         android:id="@+id/IniciarSesion"
