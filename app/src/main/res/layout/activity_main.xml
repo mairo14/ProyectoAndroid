@@ -13,7 +13,6 @@
         android:ems="10"
         android:hint="Name"
         android:inputType="textPersonName"
-        android:visibility="Name"
         tools:layout_editor_absoluteX="100dp"
         tools:layout_editor_absoluteY="244dp" />
 
