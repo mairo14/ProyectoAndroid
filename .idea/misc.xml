@@ -5,8 +5,10 @@
       <map>
         <entry key="..\:/ProyectoFinal/app/src/main/res/layout/activity_crear_cuenta.xml" value="0.36666666666666664" />
         <entry key="..\:/ProyectoFinal/app/src/main/res/layout/activity_main.xml" value="0.35260416666666666" />
+        <entry key="..\:/Users/CES/StudioProjects/ProyectoAndroid/app/src/main/res/layout/activity_activar_gps.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/CES/StudioProjects/ProyectoAndroid/app/src/main/res/layout/activity_crear_cuenta.xml" value="0.2957427536231884" />
-        <entry key="..\:/Users/CES/StudioProjects/ProyectoAndroid/app/src/main/res/layout/activity_main.xml" value="0.2957427536231884" />
+        <entry key="..\:/Users/CES/StudioProjects/ProyectoAndroid/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/CES/StudioProjects/ProyectoAndroid/app/src/main/res/layout/activity_ver_gps.xml" value="0.36666666666666664" />
       </map>
     </option>
   </component>

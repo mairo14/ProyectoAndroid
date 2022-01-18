@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ProyectoAndroid">
         <activity
+            android:name=".VerGPS"
+            android:exported="true" />
+        <activity
+            android:name=".ActivarGPS"
+            android:exported="true" />
+        <activity
             android:name=".CrearCuenta"
             android:exported="true" />
         <activity
