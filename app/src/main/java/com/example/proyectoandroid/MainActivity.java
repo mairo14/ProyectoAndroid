@@ -17,7 +17,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Reg = findViewById(R.id.Registro);
         iniciar = findViewById(R.id.IniciarSesion);
-
         Reg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -25,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-
         iniciar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
