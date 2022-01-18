@@ -20,6 +20,9 @@ public class AdaptadorPersonalizado extends BaseAdapter {
         this.contexto = contexto;
     }
 
+    public AdaptadorPersonalizado(ListadoRes listadoRes, ArrayList<Restaurante> listado) {
+    }
+
     @Override
     public int getCount() {
         return listado.size();
@@ -41,7 +44,7 @@ public class AdaptadorPersonalizado extends BaseAdapter {
         ImageView imgRes = viewInflado.findViewById(R.id.ImgRes);
         TextView nombreRes = viewInflado.findViewById(R.id.NombreRes);
         Restaurante resARellenar = (Restaurante) getItem(position);
-        imgRes.setImageResource(resARellenar.img);
+        //imgRes.setImageResource(resARellenar.img);
         nombreRes.setText(resARellenar.nombre);
         return viewInflado;
     }

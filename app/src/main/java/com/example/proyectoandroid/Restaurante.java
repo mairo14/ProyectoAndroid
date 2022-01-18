@@ -3,10 +3,16 @@ package com.example.proyectoandroid;
 public class Restaurante {
 
     String nombre;
-    int img;
 
-    public Restaurante(String nombre, int img) {
-        this.nombre = nombre;
-        this.img = img;
+
+
+
+
+    public Restaurante(String nombre) {
+        this.nombre= nombre;
+    }
+    @Override
+    public String toString() {
+        return "nombre";
     }
 }
