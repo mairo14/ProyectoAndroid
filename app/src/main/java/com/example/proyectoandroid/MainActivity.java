@@ -23,15 +23,12 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(MainActivity.this,CrearCuenta.class);
                 startActivity(i);
-
-
             }
         });
 
         iniciar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
             }
         });
     }
