@@ -5,16 +5,9 @@
       <map>
         <entry key="..\:/ProyectoFinal/app/src/main/res/layout/activity_crear_cuenta.xml" value="0.36666666666666664" />
         <entry key="..\:/ProyectoFinal/app/src/main/res/layout/activity_main.xml" value="0.35260416666666666" />
-        <entry key="..\:/Users/CES/StudioProjects/ProyectoAndroid/app/src/main/res/layout/activity_activar_gps.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/CES/StudioProjects/ProyectoAndroid/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/CES/StudioProjects/ProyectoAndroid/app/src/main/res/layout/activity_map.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/CES/StudioProjects/ProyectoAndroid/app/src/main/res/layout/activity_ver_gps.xml" value="0.17831813576494426" />
-        <entry key="..\:/Users/CES/StudioProjects/ProyectoAndroid/app/src/main/res/layout/app_bar_map.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/CES/StudioProjects/ProyectoAndroid/app/src/main/res/layout/content_map.xml" value="0.21195652173913043" />
-        <entry key="..\:/Users/CES/StudioProjects/ProyectoAndroid/app/src/main/res/layout/fragment_gallery.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/CES/StudioProjects/ProyectoAndroid/app/src/main/res/layout/fragment_home.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/CES/StudioProjects/ProyectoAndroid/app/src/main/res/layout/fragment_slideshow.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/CES/StudioProjects/ProyectoAndroid/app/src/main/res/layout/nav_header_map.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/CES/StudioProjects/ProyectoAndroid/app/src/main/res/layout/activity_ver_gps.xml" value="0.2957427536231884" />
+        <entry key="..\:/Users/CES/StudioProjects/ProyectoAndroid/app/src/main/res/layout/activity_ver_gps2.xml" value="0.2957427536231884" />
       </map>
     </option>
   </component>
