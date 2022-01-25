@@ -18,12 +18,12 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <pl.droidsonroids.gif.GifImageView
-        android:layout_width="415dp"
-        android:layout_height="656dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="3dp"
         android:layout_marginTop="2dp"
         android:layout_marginBottom="1dp"
-        android:src="@drawable/inicio"
+        android:src="@drawable/comunidad"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -26,7 +26,7 @@ public class Portada extends AppCompatActivity {
                 Intent i = new Intent(Portada.this,MainActivity.class);
                 startActivity(i);
             }
-        },5000);
+        },10000);
 
 
 
