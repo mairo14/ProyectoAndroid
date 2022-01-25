@@ -10,14 +10,15 @@
         android:id="@+id/UsuarioLogIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Name"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.25" />
 
     <EditText
         android:id="@+id/ContraseñaLogIn"
@@ -26,19 +27,27 @@
         android:layout_marginTop="50dp"
         android:ems="10"
         android:inputType="textPassword"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/UsuarioLogIn"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/UsuarioLogIn"
-        app:layout_constraintTop_toBottomOf="@+id/UsuarioLogIn" />
+        app:layout_constraintTop_toBottomOf="@+id/UsuarioLogIn"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/IniciarSesion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
+        android:backgroundTint="#041404"
         android:text="Iniciar sesion"
+        android:textColor="#939292"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/ContraseñaLogIn"
+        app:layout_constraintHorizontal_bias="0.533"
         app:layout_constraintStart_toStartOf="@+id/ContraseñaLogIn"
-        app:layout_constraintTop_toBottomOf="@+id/ContraseñaLogIn" />
+        app:layout_constraintTop_toBottomOf="@+id/ContraseñaLogIn"
+        app:layout_constraintVertical_bias="0.035" />
 
     <Button
         android:id="@+id/Registro"
@@ -46,7 +55,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:layout_marginBottom="84dp"
+        android:backgroundTint="#000000"
         android:text="Registrarte"
+        android:textColor="#939292"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/IniciarSesion"
         app:layout_constraintStart_toStartOf="@+id/IniciarSesion"
@@ -58,7 +69,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Switch"
-        tools:layout_editor_absoluteX="308dp"
-        tools:layout_editor_absoluteY="17dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.027"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

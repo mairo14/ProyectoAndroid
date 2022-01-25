@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         iniciar = findViewById(R.id.IniciarSesion);
         Reg.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 Intent i = new Intent(MainActivity.this,CrearCuenta.class);
                 startActivity(i);
             }
@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
             }
         });
+
     }
     public void setDayNight(int mode){
         if (mode == 0){
