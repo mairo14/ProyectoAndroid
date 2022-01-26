@@ -13,7 +13,7 @@
         android:layout_marginTop="50dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Nombre"
+        android:hint="Nombre"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,7 +26,7 @@
         android:layout_marginTop="50dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Apellidos"
+        android:hint="Apellidos"
         app:layout_constraintStart_toStartOf="@+id/NombreRegistro"
         app:layout_constraintTop_toBottomOf="@+id/NombreRegistro" />
 
@@ -38,7 +38,7 @@
         android:layout_marginTop="50dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Usuario"
+        android:hint="Nombre de usuario"
         app:layout_constraintStart_toStartOf="@+id/ApellidoRegistro"
         app:layout_constraintTop_toBottomOf="@+id/ApellidoRegistro" />
 
@@ -50,7 +50,7 @@
         android:layout_marginEnd="1dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Correo"
+        android:hint="Correo"
         app:layout_constraintEnd_toEndOf="@+id/UsuarioRegistro"
         app:layout_constraintTop_toBottomOf="@+id/UsuarioRegistro" />
 
@@ -61,7 +61,7 @@
         android:layout_marginTop="50dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Contraseña"
+        android:hint="Contraseña"
         app:layout_constraintStart_toStartOf="@+id/CorreoRegistro"
         app:layout_constraintTop_toBottomOf="@+id/CorreoRegistro" />
 
@@ -77,13 +77,5 @@
         app:layout_constraintStart_toStartOf="@+id/ContraseñaRegistro"
         app:layout_constraintTop_toBottomOf="@+id/ContraseñaRegistro"
         app:layout_constraintVertical_bias="0.0" />
-
-    <Switch
-        android:id="@+id/TemaRegistro"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Switch"
-        tools:layout_editor_absoluteX="303dp"
-        tools:layout_editor_absoluteY="14dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
