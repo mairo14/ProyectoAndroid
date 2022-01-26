@@ -2,17 +2,22 @@ package com.example.proyectoandroid;
 
 public class Restaurante {
 
-    String nombre;
+    public int id;
+    public String title;
 
-
-
-
-
-    public Restaurante(String nombre) {
-        this.nombre= nombre;
+    public int getId() {
+        return id;
     }
-    @Override
-    public String toString() {
-        return "nombre";
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }

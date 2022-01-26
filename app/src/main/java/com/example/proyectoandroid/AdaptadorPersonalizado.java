@@ -45,7 +45,7 @@ public class AdaptadorPersonalizado extends BaseAdapter {
         TextView nombreRes = viewInflado.findViewById(R.id.NombreRes);
         Restaurante resARellenar = (Restaurante) getItem(position);
         //imgRes.setImageResource(resARellenar.img);
-        nombreRes.setText(resARellenar.nombre);
+        //nombreRes.setText(resARellenar.nombre);
         return viewInflado;
     }
 }

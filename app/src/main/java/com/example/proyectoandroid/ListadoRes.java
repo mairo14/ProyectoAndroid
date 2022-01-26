@@ -1,80 +1,64 @@
 package com.example.proyectoandroid;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.widget.ListView;
+import android.widget.TextView;
 
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
+import androidx.appcompat.app.AppCompatActivity;
 
-import java.io.File;
-import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 
 public class ListadoRes extends AppCompatActivity {
 
-    public static ArrayList<Restaurante> listado= new ArrayList<>();
-    public static ListView listView;
-    public static AdaptadorPersonalizado adaptador;
+    ArrayList<Restaurante> listado= new ArrayList<>();
+    ListView listView;
+    AdaptadorPersonalizado adaptador;
+    TextView tvejemplo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listado_res);
-        listView = findViewById(R.id.Restaurantes);
-        ImportRes task =  new ImportRes();
-        try {
-            task.execute();
-        } catch (ParserConfigurationException e) {
-            e.printStackTrace();
-        } catch (SAXException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        tvejemplo = findViewById(R.id.Ejemplo);
 
+        find();
 
     }
-    public class ImportRes{
-        public void execute() throws ParserConfigurationException, SAXException, IOException{
+    private void find(){
 
-
-
-            try {
-                DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-                DocumentBuilder db = dbf.newDocumentBuilder();
-                Document doc = db.parse(new URL("https://www.esmadrid.com/opendata/restaurantes_v1_es.xml").openStream());
-                doc.getDocumentElement().normalize();
-
-                NodeList nodeList = doc.getDocumentElement().getChildNodes();
-                for (int i = 0; i < nodeList.getLength(); i++) {
-                    Node node = nodeList.item(i);
-                    if (node.getNodeType() == Node.ELEMENT_NODE) {
-                        Element elem = (Element) node;
-                        String nombre = elem.getElementsByTagName("name").item(0).getChildNodes().item(0).getNodeValue();
-
-                        listado.add(new Restaurante(nombre));
-
-                    }
+        Retrofit retrofit = new Retrofit.Builder().baseUrl("https://datos.madrid.es/egob/").addConverterFactory(GsonConverterFactory.create()).build();
+        ProductoAPI productoAPI = retrofit.create(ProductoAPI.class);
+        Call<List<Restaurante>> call = productoAPI.getPosts();
+        call.enqueue(new Callback<List<Restaurante>>() {
+            @Override
+            public void onResponse(Call<List<Restaurante>> call, Response<List<Restaurante>> response) {
+                if(!response.isSuccessful()){
+                    tvejemplo.setText("Codigo "+response.code());
+                    return;
                 }
-                adaptador = new AdaptadorPersonalizado(ListadoRes.this, listado);
-                listado.setAdapter(adaptador);
-
-            } catch (IOException e) {
-                e.printStackTrace();
+                List<Restaurante> List = response.body();
+                for(Restaurante restaurante: List){
+                    String content = "";
+                    content += "id:"+ restaurante.getId()+"\n";
+                    content += "title:"+ restaurante.getTitle()+"\n";
+                    tvejemplo.append(content);
+                }
             }
 
-
-
-        }
+            @Override
+            public void onFailure(Call<List<Restaurante>> call, Throwable t) {
+                    tvejemplo.setText(t.getMessage());
+            }
+        });
     }
+
+
 }
