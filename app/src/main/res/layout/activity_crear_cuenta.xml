@@ -7,71 +7,75 @@
     tools:context=".CrearCuenta">
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/NombreRegistro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Nombre"
+        android:hint="Nombre"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName3"
+        android:id="@+id/ApellidoRegistro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="50dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Apellidos"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName2"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+        android:hint="Apellidos"
+        app:layout_constraintStart_toStartOf="@+id/NombreRegistro"
+        app:layout_constraintTop_toBottomOf="@+id/NombreRegistro" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName4"
+        android:id="@+id/UsuarioRegistro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="1dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="50dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Usuario"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName3"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
+        android:hint="Nombre de usuario"
+        app:layout_constraintStart_toStartOf="@+id/ApellidoRegistro"
+        app:layout_constraintTop_toBottomOf="@+id/ApellidoRegistro" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName5"
+        android:id="@+id/CorreoRegistro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="17dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="1dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Correo"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName4"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName4" />
+        android:hint="Correo"
+        app:layout_constraintEnd_toEndOf="@+id/UsuarioRegistro"
+        app:layout_constraintTop_toBottomOf="@+id/UsuarioRegistro" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName7"
+        android:id="@+id/ContraseñaRegistro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="50dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Contraseña"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName5"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName5" />
+        android:hint="Contraseña"
+        app:layout_constraintStart_toStartOf="@+id/CorreoRegistro"
+        app:layout_constraintTop_toBottomOf="@+id/CorreoRegistro" />
 
     <Button
-        android:id="@+id/Crear"
+        android:id="@+id/Confirmar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="46dp"
-        android:text="Button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName7" />
+        android:layout_marginTop="50dp"
+        android:text="Confirmar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/ContraseñaRegistro"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/ContraseñaRegistro"
+        app:layout_constraintTop_toBottomOf="@+id/ContraseñaRegistro"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,7 +14,7 @@ public class CrearCuenta extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crear_cuenta);
-        crearSesion = findViewById(R.id.Crear);
+        crearSesion = findViewById(R.id.Confirmar);
         crearSesion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -7,40 +7,88 @@
     tools:context=".MainActivity">
 
     <EditText
-        android:id="@+id/Usuario"
+        android:id="@+id/UsuarioLogIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Name"
         android:inputType="textPersonName"
-        android:visibility="Name"
-        tools:layout_editor_absoluteX="100dp"
-        tools:layout_editor_absoluteY="244dp" />
+        android:drawableStart="@drawable/nick_icon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.25"
+        android:hint="Nombre o Email"/>
 
     <EditText
-        android:id="@+id/Password"
+        android:id="@+id/ContraseñaLogIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:autoText="false"
         android:ems="10"
-        android:hint="Email"
+        android:hint="Contraseña"
         android:inputType="textPassword"
-        tools:layout_editor_absoluteX="100dp"
-        tools:layout_editor_absoluteY="321dp" />
+        android:drawableStart="@drawable/password_icon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/UsuarioLogIn"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/UsuarioLogIn"
+        app:layout_constraintTop_toBottomOf="@+id/UsuarioLogIn"
+        app:layout_constraintVertical_bias="0.0"
+        />
 
     <Button
         android:id="@+id/IniciarSesion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Iniciar sesion"
-        tools:layout_editor_absoluteX="130dp"
-        tools:layout_editor_absoluteY="387dp" />
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="50dp"
+        android:backgroundTint="#ED0000"
+        android:text="Iniciar sesión"
+        android:textColor="#FFFF"
+        android:textColorHighlight="#937878"
+        android:textColorHint="#FFF1F1"
+        android:textColorLink="#874646"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        app:cornerRadius="10px"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/ContraseñaLogIn"
+        app:layout_constraintHorizontal_bias="0.533"
+        app:layout_constraintStart_toStartOf="@+id/ContraseñaLogIn"
+        app:layout_constraintTop_toBottomOf="@+id/ContraseñaLogIn"
+        app:layout_constraintVertical_bias="0.035" />
 
     <Button
         android:id="@+id/Registro"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Rgistrarte"
-        tools:layout_editor_absoluteX="142dp"
-        tools:layout_editor_absoluteY="456dp" />
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="50dp"
+        android:backgroundTint="#ED0000"
+        android:text="Registro"
+        android:textColor="#FFFF"
+        android:textColorHighlight="#937878"
+        android:textColorHint="#FFF1F1"
+        android:textColorLink="#874646"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        app:cornerRadius="10px"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/IniciarSesion"
+        app:layout_constraintStart_toStartOf="@+id/IniciarSesion"
+        app:layout_constraintTop_toBottomOf="@+id/IniciarSesion"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/Logo"
+        android:layout_width="match_parent"
+        android:layout_height="116dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/comunidaddemadrid"
+        tools:layout_editor_absoluteX="0dp"
+        tools:srcCompat="@drawable/ComunidadDeMadrid" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
