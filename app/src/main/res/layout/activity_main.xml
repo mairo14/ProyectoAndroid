@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".MainActivity">
 
     <EditText
@@ -26,9 +27,9 @@
         android:id="@+id/ContraseñaLogIn"
         android:layout_width="250dp"
         android:layout_height="65dp"
-        android:background="@drawable/custom_edit_text_rounded"
         android:layout_marginTop="50dp"
         android:autoText="false"
+        android:background="@drawable/custom_edit_text_rounded"
         android:drawableStart="@drawable/password_icon"
         android:ems="10"
         android:hint="@string/contrase_a"
@@ -45,21 +46,22 @@
         android:layout_width="250dp"
         android:layout_height="60dp"
         android:layout_marginTop="50dp"
+        android:background="@drawable/custom_button_rounded"
         android:backgroundTint="#ED0000"
-        android:text="Iniciar sesión"
+        android:text="@string/iniciar_sesi_n"
+        android:textAllCaps="false"
         android:textColor="#FFFF"
         android:textColorHighlight="#937878"
         android:textColorHint="#FFF1F1"
         android:textColorLink="#874646"
-        android:textAllCaps="false"
         android:textSize="20sp"
-        app:cornerRadius="12dp"
+        app:cornerRadius="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/ContraseñaLogIn"
-        app:layout_constraintHorizontal_bias="0.533"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/ContraseñaLogIn"
         app:layout_constraintTop_toBottomOf="@+id/ContraseñaLogIn"
-        app:layout_constraintVertical_bias="0.035" />
+        app:layout_constraintVertical_bias="0.162" />
 
     <Button
         android:id="@+id/Registro"
@@ -67,12 +69,13 @@
         android:layout_height="60dp"
         android:layout_marginTop="50dp"
         android:backgroundTint="#ED0000"
-        android:text="Registro"
+        android:text="@string/registro"
+        android:textAllCaps="false"
         android:textColor="#FFFF"
+        android:background="@drawable/custom_button_rounded"
         android:textColorHighlight="#937878"
         android:textColorHint="#FFF1F1"
         android:textColorLink="#874646"
-        android:textAllCaps="false"
         android:textSize="20sp"
         app:cornerRadius="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -85,11 +88,25 @@
         android:id="@+id/Logo"
         android:layout_width="match_parent"
         android:layout_height="116dp"
+        android:background="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/comunidaddemadrid"
         tools:layout_editor_absoluteX="0dp"
         tools:srcCompat="@drawable/comunidaddemadrid" />
+
+    <CheckBox
+        android:id="@+id/recuperarcontraseña"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:text="Recordarme"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/ContraseñaLogIn"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/ContraseñaLogIn"
+        app:layout_constraintTop_toBottomOf="@+id/ContraseñaLogIn"
+        app:layout_constraintVertical_bias="0.053" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
