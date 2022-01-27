@@ -12,4 +12,6 @@
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="title_activity_ver_gps">VerGPS</string>
+    <string name="contrase_a">Contraseña</string>
+    <string name="nombre_o_email">Nombre o Email</string>
 </resources>
