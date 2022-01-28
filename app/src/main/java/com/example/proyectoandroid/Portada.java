@@ -29,7 +29,7 @@ public class Portada extends AppCompatActivity {
                 Intent i = new Intent(Portada.this,MainActivity.class);
                 startActivity(i);
             }
-        },10000);
+        },9000);
 
 img2.setOnClickListener(new View.OnClickListener() {
     @Override

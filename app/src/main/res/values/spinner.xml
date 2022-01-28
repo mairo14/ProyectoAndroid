@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="opciones">
+        <item></item>
+        <item>Youtube</item>
+        <item>Twitter</item>
+        <item>Instagram</item>
+        <item>Facebook</item>
+        <item>Aviso legal</item>
+        <item>Cerrar sesión</item>
+
+    </string-array>
+</resources>
