@@ -1,8 +1,12 @@
 package com.example.proyectoandroid;
 
+import static java.security.AccessController.getContext;
+
 import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -32,32 +36,37 @@ public class ListadoRes extends AppCompatActivity {
         find();
 
     }
+    private void poblarSpinnerRestaurantes(ArrayList<Restaurante> restaurantes){
+
+    }
+
     private void find(){
 
         Retrofit retrofit = new Retrofit.Builder().baseUrl("https://datos.madrid.es/egob/").addConverterFactory(GsonConverterFactory.create()).build();
         ProductoAPI productoAPI = retrofit.create(ProductoAPI.class);
-        Call<List<Restaurante>> call = productoAPI.getPosts();
-        call.enqueue(new Callback<List<Restaurante>>() {
-            @Override
-            public void onResponse(Call<List<Restaurante>> call, Response<List<Restaurante>> response) {
-                if(!response.isSuccessful()){
-                    tvejemplo.setText("Codigo "+response.code());
-                    return;
+        Call<RestauranteLLamada> call = productoAPI.getPosts();
+        call.enqueue(new RestauranteCallback());
+    }
+    class RestauranteCallback implements Callback<RestauranteLLamada> {
+
+        @Override
+        public void onResponse(Call<RestauranteLLamada> call, Response<RestauranteLLamada> response) {
+            if (response.isSuccessful()){
+                RestauranteLLamada restauranteLLamada = response.body();
+                if (! restauranteLLamada.isError()){
+                    porestauranteLLamada.getRestaurante()
                 }
-                List<Restaurante> List = response.body();
-                for(Restaurante restaurante: List){
-                    String content = "";
-                    content += "id:"+ restaurante.getId()+"\n";
-                    content += "title:"+ restaurante.getTitle()+"\n";
-                    tvejemplo.append(content);
-                }
+
+            }else{
+
             }
 
-            @Override
-            public void onFailure(Call<List<Restaurante>> call, Throwable t) {
-                    tvejemplo.setText(t.getMessage());
-            }
-        });
+        }
+
+        @Override
+        public void onFailure(Call<RestauranteLLamada> call, Throwable t) {
+           // Toast.makeText(getContext(),t.getLocalizedMessage(),Toast.LENGTH_SHORT).show();
+        }
     }
 
 
