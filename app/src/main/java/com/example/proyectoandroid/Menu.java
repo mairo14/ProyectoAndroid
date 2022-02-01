@@ -16,7 +16,7 @@ import pl.droidsonroids.gif.GifImageView;
 public class Menu extends AppCompatActivity {
   ImageView img1,img2,img3,img4;
   Spinner spinner;
-  private String url;
+  private String url,url2,url3,url4;
 
 
     @Override
@@ -27,7 +27,11 @@ public class Menu extends AppCompatActivity {
         img1=findViewById(R.id.metro);
         spinner = findViewById(R.id.spinner);
         url = "https://www.youtube.com/user/el7desol";
+        url2 = "https://twitter.com/ComunidadMadrid?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor";
+        url3 = "https://es-es.facebook.com/ComunidadMadrid";
         Uri uri = Uri.parse(url);
+        Uri uri2 = Uri.parse(url2);
+        Uri uri3 = Uri.parse(url3);
         img1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -51,6 +55,26 @@ public class Menu extends AppCompatActivity {
                     Intent i = new Intent(Intent.ACTION_VIEW,uri);
                     startActivity(i);
                 }
+                else
+                    {
+                        if (selectedItem.equals("Facebook"))
+                        {
+
+                            Intent i = new Intent(Intent.ACTION_VIEW,uri3);
+                            startActivity(i);
+                        }
+                        else
+                            {
+                                if (selectedItem.equals("Twitter"))
+                                {
+
+                                    Intent i = new Intent(Intent.ACTION_VIEW,uri2);
+                                    startActivity(i);
+                                }
+
+                        }
+
+                }
 
             }
 
@@ -60,6 +84,10 @@ public class Menu extends AppCompatActivity {
 
             }
         });
+
+
+
+
 
 
     }
