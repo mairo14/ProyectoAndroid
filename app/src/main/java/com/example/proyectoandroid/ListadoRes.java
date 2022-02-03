@@ -1,73 +1,89 @@
 package com.example.proyectoandroid;
 
-import static java.security.AccessController.getContext;
-
 import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 
 public class ListadoRes extends AppCompatActivity {
 
-    ArrayList<Restaurante> listado= new ArrayList<>();
+    ArrayList<Cementerio> listado= new ArrayList<>();
+
     ListView listView;
     AdaptadorPersonalizado adaptador;
-    TextView tvejemplo;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listado_res);
-        tvejemplo = findViewById(R.id.Ejemplo);
+        listView = findViewById(R.id.listView);
+        double latitud = 40.472032763100025;
+        double longitud = -3.6406523385659426;
+        int distancia = 5000;
+        //latitud=40.472032763100025&longitud=-3.6406523385659426&distancia=5000
+        //https://datos.madrid.es/egob/catalogo/205026-0-cementerios.json?
+        String base = "https://datos.madrid.es/egob/catalogo/205026-0-cementerios.json?";
+        String loc = "latitud=" + latitud +"&longitud="+ longitud+ "&distancia="+ distancia;
+        LeerWS(base+loc+ "\n");
 
-        find();
+
 
     }
-    private void poblarSpinnerRestaurantes(ArrayList<Restaurante> restaurantes){
+    private void LeerWS(String url){
 
-    }
+        StringRequest postRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    JSONArray arrayGraph = jsonObject.getJSONArray("@graph");
+                    for (int i = 0; i < arrayGraph.length(); i++) {
+                        //;
+                        System.out.println(arrayGraph.getJSONObject(i).getString("title"));
+                        System.out.println(arrayGraph.getJSONObject(i).getJSONObject("location").getDouble("latitude"));
+                        listado.add(new Cementerio(arrayGraph.getJSONObject(i).getString("title")
+                                , arrayGraph.getJSONObject(i).getJSONObject("location").getDouble("latitude")
+                                , arrayGraph.getJSONObject(i).getJSONObject("location").getDouble("longitude")
+                        ));
+                    }
+                    adaptador = new AdaptadorPersonalizado(ListadoRes.this, listado);
+                    listView.setAdapter(adaptador);
+                    //Title.setText(title);
 
-    private void find(){
-
-        Retrofit retrofit = new Retrofit.Builder().baseUrl("https://datos.madrid.es/egob/").addConverterFactory(GsonConverterFactory.create()).build();
-        ProductoAPI productoAPI = retrofit.create(ProductoAPI.class);
-        Call<RestauranteLLamada> call = productoAPI.getPosts();
-        call.enqueue(new RestauranteCallback());
-    }
-    class RestauranteCallback implements Callback<RestauranteLLamada> {
-
-        @Override
-        public void onResponse(Call<RestauranteLLamada> call, Response<RestauranteLLamada> response) {
-            if (response.isSuccessful()){
-                RestauranteLLamada restauranteLLamada = response.body();
-                if (! restauranteLLamada.isError()){
-                    porestauranteLLamada.getRestaurante()
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
-
-            }else{
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
 
             }
 
-        }
+        });
+        Volley.newRequestQueue(this).add(postRequest);
 
-        @Override
-        public void onFailure(Call<RestauranteLLamada> call, Throwable t) {
-           // Toast.makeText(getContext(),t.getLocalizedMessage(),Toast.LENGTH_SHORT).show();
-        }
     }
+
+
 
 
 }
