@@ -38,9 +38,12 @@ public class ListadoRes extends AppCompatActivity {
         double latitud = 40.472032763100025;
         double longitud = -3.6406523385659426;
         int distancia = 5000;
+
+        //   /catalogo/210227-0-piscinas-publicas.json
+        //   /catalogo/300048-0-ancianos-residencias-apartamento.json
         //latitud=40.472032763100025&longitud=-3.6406523385659426&distancia=5000
         //https://datos.madrid.es/egob/catalogo/205026-0-cementerios.json?
-        String base = "https://datos.madrid.es/egob/catalogo/205026-0-cementerios.json?";
+        String base = "https://datos.madrid.es/egob/catalogo/300048-0-ancianos-residencias-apartamento.json?";
         String loc = "latitud=" + latitud +"&longitud="+ longitud+ "&distancia="+ distancia;
         LeerWS(base+loc+ "\n");
 
@@ -55,10 +58,14 @@ public class ListadoRes extends AppCompatActivity {
                 try {
                     JSONObject jsonObject = new JSONObject(response);
                     JSONArray arrayGraph = jsonObject.getJSONArray("@graph");
+                    int contador = 0;
                     for (int i = 0; i < arrayGraph.length(); i++) {
-                        //;
+
+                        contador++;
+                        System.out.println(contador);
                         System.out.println(arrayGraph.getJSONObject(i).getString("title"));
                         System.out.println(arrayGraph.getJSONObject(i).getJSONObject("location").getDouble("latitude"));
+                        System.out.println(arrayGraph.getJSONObject(i).getJSONObject("location").getDouble("longitude"));
                         listado.add(new Cementerio(arrayGraph.getJSONObject(i).getString("title")
                                 , arrayGraph.getJSONObject(i).getJSONObject("location").getDouble("latitude")
                                 , arrayGraph.getJSONObject(i).getJSONObject("location").getDouble("longitude")
@@ -66,6 +73,7 @@ public class ListadoRes extends AppCompatActivity {
                     }
                     adaptador = new AdaptadorPersonalizado(ListadoRes.this, listado);
                     listView.setAdapter(adaptador);
+
                     //Title.setText(title);
 
                 } catch (JSONException e) {
