@@ -14,6 +14,10 @@ public class Cementerio {
         this.longitude = longitude;
     }
 
+    public static int get(int i) {
+                return 0;
+    }
+
     public String getTitle() {
         return title;
     }

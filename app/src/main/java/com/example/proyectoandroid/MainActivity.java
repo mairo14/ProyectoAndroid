@@ -2,6 +2,7 @@ package com.example.proyectoandroid;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.core.app.ActivityCompat;
 
 import android.content.Intent;
 import android.os.Build;
@@ -19,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Reg = findViewById(R.id.Registro);
         iniciar = findViewById(R.id.IniciarSesion);
+
 
         Reg.setOnClickListener(new View.OnClickListener() {
             @Override

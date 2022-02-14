@@ -1,11 +1,18 @@
 package com.example.proyectoandroid;
 
+import android.content.Intent;
+import android.location.Location;
+import android.location.LocationListener;
+import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
-
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.Request;
@@ -19,6 +26,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class ListadoRes extends AppCompatActivity {
@@ -41,9 +49,9 @@ public class ListadoRes extends AppCompatActivity {
 
         //   /catalogo/210227-0-piscinas-publicas.json
         //   /catalogo/300048-0-ancianos-residencias-apartamento.json
-        //latitud=40.472032763100025&longitud=-3.6406523385659426&distancia=5000
+        //    latitud=40.472032763100025&longitud=-3.6406523385659426&distancia=5000
         //https://datos.madrid.es/egob/catalogo/205026-0-cementerios.json?
-        String base = "https://datos.madrid.es/egob/catalogo/300048-0-ancianos-residencias-apartamento.json?";
+        String base = "https://datos.madrid.es/egob/catalogo/210227-0-piscinas-publicas.json?";
         String loc = "latitud=" + latitud +"&longitud="+ longitud+ "&distancia="+ distancia;
         LeerWS(base+loc+ "\n");
 
@@ -71,8 +79,9 @@ public class ListadoRes extends AppCompatActivity {
                                 , arrayGraph.getJSONObject(i).getJSONObject("location").getDouble("longitude")
                         ));
                     }
-                    adaptador = new AdaptadorPersonalizado(ListadoRes.this, listado);
-                    listView.setAdapter(adaptador);
+                  adaptador = new AdaptadorPersonalizado(ListadoRes.this, listado);
+                  listView.setAdapter(adaptador);
+                    seleccionarListado();
 
                     //Title.setText(title);
 
@@ -89,6 +98,49 @@ public class ListadoRes extends AppCompatActivity {
         });
         Volley.newRequestQueue(this).add(postRequest);
 
+    }
+    //--------------------------------------------------------------------------------------------------------------------------------
+    private void seleccionarListado() {
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Toast.makeText(getApplicationContext(),String.valueOf(i),Toast.LENGTH_LONG).show();
+                System.out.println("sout "+String.valueOf(i));
+
+
+
+
+                Intent intent = new Intent(ListadoRes.this,MapsActivity.class);
+                intent.putExtra("nombre", String.valueOf(listado.get(i).title));
+                intent.putExtra("lat", Double.valueOf(listado.get(i).latitude));
+                intent.putExtra("lon", Double.valueOf(listado.get(i).longitude));
+                startActivity(intent);
+
+            }
+        });
+
+    }
+    private class Localizacion implements LocationListener{
+
+        @Override
+        public void onLocationChanged(@NonNull Location location) {
+
+        }
+
+        @Override
+        public void onLocationChanged(@NonNull List<Location> locations) {
+
+        }
+
+        @Override
+        public void onProviderEnabled(@NonNull String provider) {
+
+        }
+
+        @Override
+        public void onProviderDisabled(@NonNull String provider) {
+
+        }
     }
 
 
