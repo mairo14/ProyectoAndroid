@@ -31,14 +31,10 @@ public class MainActivity extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setNavigationBarColor(getResources().getColor(R.color.black));
         }
-        if (revisarSesion()){
-            startActivity(new Intent(this, RecuperarContrasenia.class));
-        }
 
 
-        if (revisarSesion()){
-            startActivity(new Intent(this, RecuperarContrasenia.class));
-        }
+
+
         Reg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -53,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(MainActivity.this,ListadoRes.class);
-                guardarSesion(recordar.isChecked());
+               // guardarSesion(recordar.isChecked());
                 startActivity(i);
             }
         });
@@ -67,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
             getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         }
     }
-
+/*
     private boolean revisarSesion(){
         boolean sesion = this.preferences.getBoolean(llave, false);
         return false;
@@ -83,4 +79,6 @@ public class MainActivity extends AppCompatActivity {
         editor = preferences.edit();
         recordar = findViewById(R.id.recordarcontraseña);
     }
+
+ */
 }
