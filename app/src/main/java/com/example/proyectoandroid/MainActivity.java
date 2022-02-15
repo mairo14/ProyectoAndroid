@@ -34,9 +34,14 @@ public class MainActivity extends AppCompatActivity {
         if (revisarSesion()){
             startActivity(new Intent(this, RecuperarContrasenia.class));
         }
+
+
+        if (revisarSesion()){
+            startActivity(new Intent(this, RecuperarContrasenia.class));
+        }
         Reg.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 Intent i = new Intent(MainActivity.this,CrearCuenta.class);
                 startActivity(i);
 
