@@ -4,23 +4,22 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class AdaptadorPersonalizado extends BaseAdapter {
-
-    ArrayList<Restaurante> listado;
     Context contexto;
+    ArrayList<Cementerio> listado;
 
-    public AdaptadorPersonalizado(ArrayList<Restaurante> listado, Context contexto) {
-        this.listado = listado;
+
+    public AdaptadorPersonalizado(Context contexto, ArrayList<Cementerio> listado) {
         this.contexto = contexto;
-    }
-
-    public AdaptadorPersonalizado(ListadoRes listadoRes, ArrayList<Restaurante> listado) {
+        this.listado = listado;
     }
 
     @Override
@@ -29,7 +28,7 @@ public class AdaptadorPersonalizado extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int position) {
+    public Cementerio getItem(int position) {
         return listado.get(position);
     }
 
@@ -39,13 +38,18 @@ public class AdaptadorPersonalizado extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        View viewInflado = LayoutInflater.from(contexto).inflate(R.layout.disenho_lista, null);
-        ImageView imgRes = viewInflado.findViewById(R.id.ImgRes);
-        TextView nombreRes = viewInflado.findViewById(R.id.NombreRes);
-        Restaurante resARellenar = (Restaurante) getItem(position);
-        //imgRes.setImageResource(resARellenar.img);
-        //nombreRes.setText(resARellenar.nombre);
-        return viewInflado;
+    public View getView(int position, View convertView, ViewGroup parent)
+    {
+        convertView = LayoutInflater.from(contexto).inflate(R.layout.disenho_lista, null);
+
+        TextView Title = convertView.findViewById(R.id.NombreRes);
+
+        Title.setText(listado.get(position).title);
+
+        return convertView;
     }
+
+
+
+
 }

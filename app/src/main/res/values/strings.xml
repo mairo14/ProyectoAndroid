@@ -16,4 +16,5 @@
     <string name="nombre_o_email">Nombre o Email</string>
     <string name="iniciar_sesi_n">Iniciar sesión</string>
     <string name="registro">Registro</string>
+    <string name="title_activity_maps">MapsActivity</string>
 </resources>
