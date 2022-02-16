@@ -7,6 +7,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,13 +37,29 @@ public class ListadoRes extends AppCompatActivity {
     ListView listView;
     AdaptadorPersonalizado adaptador;
 
-
+    TextView mostrarUsuario;
+    Button salir;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listado_res);
         listView = findViewById(R.id.listView);
+        mostrarUsuario = findViewById(R.id.Usuario);
+        salir = findViewById(R.id.Salir);
+        Intent i = getIntent();
+        String usuario = i.getStringExtra("usuario");
+        mostrarUsuario.setText(usuario);
+        salir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(ListadoRes.this, MainActivity.class);
+                startActivity(i);
+
+            }
+        });
+
+
         double latitud = 40.472032763100025;
         double longitud = -3.6406523385659426;
         int distancia = 5000;
@@ -114,6 +131,7 @@ public class ListadoRes extends AppCompatActivity {
                 intent.putExtra("nombre", String.valueOf(listado.get(i).title));
                 intent.putExtra("lat", Double.valueOf(listado.get(i).latitude));
                 intent.putExtra("lon", Double.valueOf(listado.get(i).longitude));
+
                 startActivity(intent);
 
             }
