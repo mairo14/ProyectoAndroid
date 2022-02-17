@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
                 String usuarioEscrito = usuario.getText().toString();
                 String contraseñaEscrito = contraseña.getText().toString();
                 //if(recordar.isChecked()){
-                    Intent i = new Intent(MainActivity.this,ListadoRes.class);
+                    Intent i = new Intent(MainActivity.this,MarcarUbicacion.class);
                     i.putExtra("usuario", usuarioEscrito);
                     startActivity(i);
 
