@@ -10,7 +10,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class CrearCuenta extends AppCompatActivity {
+
+    static ArrayList<Usuario> usuarios= new java.util.ArrayList<>();
 
     Button crearSesion;
     EditText nombreRegistro, apellidoRegistro, usuarioRegistro, correoRegistro, contraseñaRegistro;
@@ -42,27 +46,16 @@ public class CrearCuenta extends AppCompatActivity {
                 correo = correoRegistro.getText().toString();
                 contraseña = contraseñaRegistro.getText().toString();
               if(!nombre.equals("") && !apellido.equals("") && !usuario.equals("") && !correo.equals("")&& !contraseña.equals("")){
-                  CrearSesion( usuario, contraseña);
+                  usuarios.add(new Usuario(nombre, apellido, usuario,correo,contraseña));
+
+                  Intent i = new Intent(CrearCuenta.this,MainActivity.class);
+                  startActivity(i);
 
               }else{
                   Toast.makeText(getApplicationContext(),"Faltan datos",Toast.LENGTH_LONG).show();
 
               }
-
             }
         });
-
-
-    }
-    private void CrearSesion(String Usuario,String contraseña){
-
-
-        Intent i = new Intent(CrearCuenta.this,MainActivity.class);
-        i.putExtra("usuario", Usuario);
-        i.putExtra("contraseña", contraseña);
-        startActivity(i);
-
-
-
     }
 }

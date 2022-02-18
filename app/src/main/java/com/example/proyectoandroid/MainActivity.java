@@ -12,18 +12,25 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
+    ArrayList<Usuario> usu= new java.util.ArrayList<>();
     Button Reg, iniciar;
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
     String llave = "sesion";
     CheckBox recordar;
+    String usuarioEscrito;
+    String contraseñaEscrito;
 
-    TextView usuario , contraseña;
+    EditText usuario;
+    EditText contraseña;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,10 +41,8 @@ public class MainActivity extends AppCompatActivity {
         usuario = findViewById(R.id.UsuarioLogIn);
         contraseña = findViewById(R.id.ContraseñaLogIn);
         recordar = findViewById(R.id.recordarcontraseña);
+        usu = CrearCuenta.usuarios;
 
-        Intent i = getIntent();
-        String usuarioR = i.getStringExtra("usuario");
-        String contraseñaR = i.getStringExtra("contraseña");
 
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -60,20 +65,20 @@ public class MainActivity extends AppCompatActivity {
         iniciar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String usuarioEscrito = usuario.getText().toString();
-                String contraseñaEscrito = contraseña.getText().toString();
-                //if(recordar.isChecked()){
-                    Intent i = new Intent(MainActivity.this,ListadoRes.class);
-                    i.putExtra("usuario", usuarioEscrito);
-                    startActivity(i);
+                usuarioEscrito=    usuario.getText().toString();
+                contraseñaEscrito =   contraseña.getText().toString();
 
-              /*  }if(usuarioR.equals(usuarioEscrito) && contraseñaR.equals(contraseñaEscrito) ){
-                    Intent i = new Intent(MainActivity.this,ListadoRes.class);
-                    i.putExtra("usuario", usuarioEscrito);
-                    startActivity(i);
+                if(usuarioEscrito != usu.get(0).getUsuario() && contraseñaEscrito != usu.get(0).getContraseña()){
+                    Toast.makeText(MainActivity.this, "Contraseña o ususario invalidos", Toast.LENGTH_SHORT).show();
                 }else{
-                        Toast.makeText(getApplicationContext(),"Faltan datos",Toast.LENGTH_LONG).show();
-                }*/
+
+                    Intent i = new Intent(MainActivity.this ,ListadoRes.class);
+                    startActivity(i);
+                }
+
+
+
+
             }
         });
 //-------------------------------------------------------------------------------------------------------------------------
