@@ -21,6 +21,8 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     ArrayList<Usuario> usu= new java.util.ArrayList<>();
+    ArrayList<Seleccionados> usu1= new java.util.ArrayList<>();
+
     Button Reg, iniciar;
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
@@ -45,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setNavigationBarColor(getResources().getColor(R.color.black));
         }
@@ -55,8 +58,9 @@ public class MainActivity extends AppCompatActivity {
         Reg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Intent i = new Intent(MainActivity.this,CrearCuenta.class);
-                startActivity(i);
+              startActivity(i);
 
 
             }
@@ -68,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
                 usuarioEscrito=    usuario.getText().toString();
                 contraseñaEscrito =   contraseña.getText().toString();
 
-                if(usuarioEscrito != usu.get(0).getUsuario() && contraseñaEscrito != usu.get(0).getContraseña()){
+                if(!usuarioEscrito.equals(usu.get(0).getUsuario()) || !contraseñaEscrito.equals(usu.get(0).getContraseña())){
                     Toast.makeText(MainActivity.this, "Contraseña o ususario invalidos", Toast.LENGTH_SHORT).show();
                 }else{
 

@@ -74,7 +74,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 startActivity(i);
             }
         });
-        mMap.addMarker(new MarkerOptions().position(posicion1).title("Posicion actual")).setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
+        mMap.addMarker(new MarkerOptions().position(posicion1).title("Posicion actual")).setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(posicion1, 10));
         //mMap.zoo
         System.out.println("gdfgfdgfd");
@@ -86,9 +86,25 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         for (int i = 0; i <(ListadoRes.arrayMapa).size(); i++) {
             System.out.println("pasa");
 
+
             LatLng localizacion = new LatLng(lista.get(i).latitude ,lista.get(i).longitude);
             System.out.println(i);
-            mMap.addMarker(new MarkerOptions().position(localizacion).title(lista.get(i).title));
+            String tipo = lista.get(i).tipo;
+
+
+            if(tipo.equals("piscinas")){
+
+                mMap.addMarker(new MarkerOptions().position(localizacion).title(lista.get(i).title)).setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
+            }if(tipo.equals("Residencias")){
+                mMap.addMarker(new MarkerOptions().position(localizacion).title(lista.get(i).title)).setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
+
+            }if (tipo.equals("cementerios")){
+                mMap.addMarker(new MarkerOptions().position(localizacion).title(lista.get(i).title)).setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
+
+            }
+
+
+
         }
 
 

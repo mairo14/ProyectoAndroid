@@ -45,14 +45,16 @@ public class CrearCuenta extends AppCompatActivity {
                 usuario = usuarioRegistro.getText().toString();
                 correo = correoRegistro.getText().toString();
                 contraseña = contraseñaRegistro.getText().toString();
+
+
               if(!nombre.equals("") && !apellido.equals("") && !usuario.equals("") && !correo.equals("")&& !contraseña.equals("")){
                   usuarios.add(new Usuario(nombre, apellido, usuario,correo,contraseña));
-
+                  Toast.makeText(getApplicationContext(),"Usuario creado",Toast.LENGTH_LONG).show();
                   Intent i = new Intent(CrearCuenta.this,MainActivity.class);
                   startActivity(i);
 
               }else{
-                  Toast.makeText(getApplicationContext(),"Faltan datos",Toast.LENGTH_LONG).show();
+
 
               }
             }

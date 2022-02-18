@@ -212,7 +212,7 @@ public class ListadoRes extends AppCompatActivity {
                 Double lonParaArray = listado.get(i).longitude;
 
 
-               arrayMapa.add(new Seleccionados(titulo, latParaArray, lonParaArray,tipo ));
+               arrayMapa.add(new Seleccionados(titulo, latParaArray, lonParaArray, tipo ));
 
 
 

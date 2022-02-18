@@ -6,24 +6,11 @@ public class Seleccionados {
     public double longitude;
     public String tipo;
 
-
-    public Seleccionados(String title, double latitude, double longitude,String tipo) {
+    public Seleccionados(String title, double latitude, double longitude, String tipo) {
         this.title = title;
         this.latitude = latitude;
         this.longitude = longitude;
         this.tipo = tipo;
-    }
-
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
-
-    public static int get(int i) {
-        return 0;
     }
 
     public String getTitle() {
@@ -50,5 +37,11 @@ public class Seleccionados {
         this.longitude = longitude;
     }
 
+    public String getTipo() {
+        return tipo;
+    }
 
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
 }
