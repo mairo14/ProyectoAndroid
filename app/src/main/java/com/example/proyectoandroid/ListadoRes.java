@@ -1,6 +1,8 @@
 package com.example.proyectoandroid;
 
+import android.content.ContentResolver;
 import android.content.Intent;
+import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationListener;
 import android.os.Build;
@@ -32,13 +34,21 @@ import java.util.List;
 
 public class ListadoRes extends AppCompatActivity {
 
-    ArrayList<Cementerio> listado= new ArrayList<>();
+    static ArrayList<Cementerio> listado= new ArrayList<>();
+    static ArrayList<Seleccionados> arrayMapa= new ArrayList<>();
+
 
     ListView listView;
     AdaptadorPersonalizado adaptador;
-
+    TextView tipoDeBusqueda;
     TextView mostrarUsuario;
     Button salir;
+    Button anteriorList;
+    Button siguienteList;
+    Double lati;
+    Double longi;
+    int pestaña = 0;
+    String tipo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,39 +57,110 @@ public class ListadoRes extends AppCompatActivity {
         listView = findViewById(R.id.listView);
         mostrarUsuario = findViewById(R.id.Usuario);
         salir = findViewById(R.id.Salir);
+        tipoDeBusqueda = findViewById(R.id.Tipo);
+        anteriorList = findViewById(R.id.Anterior);
+        siguienteList = findViewById(R.id.Siguiente);
+
         Intent i = getIntent();
         String usuario = i.getStringExtra("usuario");
-        mostrarUsuario.setText(usuario);
+        String direccion = i.getStringExtra("direccion");
+        lati = i.getDoubleExtra("latitud", 0);
+        longi = i.getDoubleExtra("longitud", 0);
+        mostrarUsuario.setText(direccion);
+        arrayMapa.clear();
+
         salir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(ListadoRes.this, MainActivity.class);
+
                 startActivity(i);
 
             }
         });
 
 
-        double latitud = 40.472032763100025;
-        double longitud = -3.6406523385659426;
-        int distancia = 5000;
+        CrearLink(pestaña);
+        anteriorList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(pestaña ==0){
 
-        //   /catalogo/210227-0-piscinas-publicas.json
-        //   /catalogo/300048-0-ancianos-residencias-apartamento.json
-        //    latitud=40.472032763100025&longitud=-3.6406523385659426&distancia=5000
-        //https://datos.madrid.es/egob/catalogo/205026-0-cementerios.json?
-        String base = "https://datos.madrid.es/egob/catalogo/210227-0-piscinas-publicas.json?";
-        String loc = "latitud=" + latitud +"&longitud="+ longitud+ "&distancia="+ distancia;
-        LeerWS(base+loc+ "\n");
+                }else{
+                    pestaña --;
 
+                    CrearLink(pestaña);
+
+                }
+
+            }
+        });
+        siguienteList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if(pestaña == 2){
+
+                    GoMapa();
+
+                }else{
+                    pestaña++;
+
+                    CrearLink(pestaña);
+
+                }
+
+            }
+        });
 
 
     }
+
+    private void CrearLink(int caso){
+        if(caso == 0){
+            tipo = "piscinas";
+            tipoDeBusqueda.setText(tipo);
+            double latitud = lati;
+            double longitud = longi;
+            int distancia = 5000;
+            String base = "https://datos.madrid.es/egob/catalogo/210227-0-piscinas-publicas.json?";
+            String loc = "latitud=" + latitud +"&longitud="+ longitud+ "&distancia="+ distancia;
+            LeerWS(base+loc+ "\n");
+        }if(caso ==1){
+
+            tipo = "Residencias";
+            tipoDeBusqueda.setText(tipo);
+            double latitud = lati;
+            double longitud = longi;
+            int distancia = 5000;
+            String base = "https://datos.madrid.es/egob/catalogo/300048-0-ancianos-residencias-apartamento.json?";
+            String loc = "latitud=" + latitud +"&longitud="+ longitud+ "&distancia="+ distancia;
+            LeerWS(base+loc+ "\n");
+
+        }if(caso ==2){
+            tipo = "cementerios";
+            tipoDeBusqueda.setText(tipo);
+            double latitud = lati;
+            double longitud = longi;
+            int distancia = 5000;
+            String base = "https://datos.madrid.es/egob/catalogo/205026-0-cementerios.json?";
+            String loc = "latitud=" + latitud +"&longitud="+ longitud+ "&distancia="+ distancia;
+            LeerWS(base+loc+ "\n");
+
+        }
+
+
+    }
+
+
     private void LeerWS(String url){
 
         StringRequest postRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+
+                listado.clear();
+
                 try {
                     JSONObject jsonObject = new JSONObject(response);
                     JSONArray arrayGraph = jsonObject.getJSONArray("@graph");
@@ -125,41 +206,38 @@ public class ListadoRes extends AppCompatActivity {
                 System.out.println("sout "+String.valueOf(i));
 
 
+                view.setBackgroundColor(Color.RED);
+                String titulo = listado.get(i).title;
+                Double latParaArray = listado.get(i).latitude;
+                Double lonParaArray = listado.get(i).longitude;
 
 
-                Intent intent = new Intent(ListadoRes.this,MapsActivity.class);
-                intent.putExtra("nombre", String.valueOf(listado.get(i).title));
-                intent.putExtra("lat", Double.valueOf(listado.get(i).latitude));
-                intent.putExtra("lon", Double.valueOf(listado.get(i).longitude));
+               arrayMapa.add(new Seleccionados(titulo, latParaArray, lonParaArray,tipo ));
 
-                startActivity(intent);
+
+
+
 
             }
         });
 
     }
-    private class Localizacion implements LocationListener{
+    private void GoMapa(){
 
-        @Override
-        public void onLocationChanged(@NonNull Location location) {
+        double latitud = lati;
+        double longitud = longi;
 
-        }
+        Intent intent = new Intent(ListadoRes.this,MapsActivity.class);
+        //intent.putExtra("nombre", String.valueOf(listado.get(i).title));
+        intent.putExtra("lat", Double.valueOf(latitud));
+        intent.putExtra("lon", Double.valueOf(longitud));
 
-        @Override
-        public void onLocationChanged(@NonNull List<Location> locations) {
+        startActivity(intent);
 
-        }
 
-        @Override
-        public void onProviderEnabled(@NonNull String provider) {
 
-        }
-
-        @Override
-        public void onProviderDisabled(@NonNull String provider) {
-
-        }
     }
+
 
 
 

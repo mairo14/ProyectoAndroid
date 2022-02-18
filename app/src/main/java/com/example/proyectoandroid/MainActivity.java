@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Contraseña o ususario invalidos", Toast.LENGTH_SHORT).show();
                 }else{
 
-                    Intent i = new Intent(MainActivity.this ,ListadoRes.class);
+                    Intent i = new Intent(MainActivity.this ,MarcarUbicacion.class);
                     startActivity(i);
                 }
 
