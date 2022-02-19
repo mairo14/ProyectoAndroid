@@ -29,6 +29,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 
@@ -174,9 +176,21 @@ public class ListadoRes extends AppCompatActivity {
                         System.out.println(arrayGraph.getJSONObject(i).getJSONObject("location").getDouble("longitude"));
                         listado.add(new Cementerio(arrayGraph.getJSONObject(i).getString("title")
                                 , arrayGraph.getJSONObject(i).getJSONObject("location").getDouble("latitude")
-                                , arrayGraph.getJSONObject(i).getJSONObject("location").getDouble("longitude")
+                                , arrayGraph.getJSONObject(i).getJSONObject("location").getDouble("longitude"),0
                         ));
                     }
+                    for (int i = 0; i < listado.size(); i++) {
+                       double lat =  listado.get(i).latitude;
+                       int cercania = (int) (lat -lati);
+                       listado.get(i).setCercania(cercania);
+
+                    }
+                    Collections.sort(listado, new Comparator<Cementerio>() {
+                        @Override
+                        public int compare(Cementerio p1, Cementerio p2) {
+                            return new Integer(p1.getCercania()).compareTo(Integer.valueOf(p2.getCercania()));
+                        }
+                    });;
                   adaptador = new AdaptadorPersonalizado(ListadoRes.this, listado);
                   listView.setAdapter(adaptador);
                     seleccionarListado();
@@ -197,6 +211,8 @@ public class ListadoRes extends AppCompatActivity {
         Volley.newRequestQueue(this).add(postRequest);
 
     }
+
+
     //--------------------------------------------------------------------------------------------------------------------------------
     private void seleccionarListado() {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

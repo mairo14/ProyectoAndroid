@@ -6,16 +6,13 @@ public class Cementerio {
     public String title;
     public double latitude;
     public double longitude;
+    public int cercania;
 
-
-    public Cementerio(String title, double latitude, double longitude) {
+    public Cementerio(String title, double latitude, double longitude, int cercania) {
         this.title = title;
         this.latitude = latitude;
         this.longitude = longitude;
-    }
-
-    public static int get(int i) {
-                return 0;
+        this.cercania = cercania;
     }
 
     public String getTitle() {
@@ -40,5 +37,13 @@ public class Cementerio {
 
     public void setLongitude(double longitude) {
         this.longitude = longitude;
+    }
+
+    public int getCercania() {
+        return cercania;
+    }
+
+    public void setCercania(int cercania) {
+        this.cercania = cercania;
     }
 }
