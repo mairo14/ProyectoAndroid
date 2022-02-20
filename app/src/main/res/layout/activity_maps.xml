@@ -9,13 +9,16 @@
 
     <fragment
         android:id="@+id/map"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".MapsActivity" />
 
     <Button
         android:id="@+id/volver"
+        android:background="@drawable/custom_button_rounded"
+        android:backgroundTint="#ED0000"
+        android:textColor="#FFFF"
+        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="volver" />
