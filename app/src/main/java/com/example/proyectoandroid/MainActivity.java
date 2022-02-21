@@ -21,13 +21,9 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     ArrayList<Usuario> usu= new java.util.ArrayList<>();
-    ArrayList<Seleccionados> usu1= new java.util.ArrayList<>();
+
 
     Button Reg, iniciar;
-    SharedPreferences preferences;
-    SharedPreferences.Editor editor;
-    String llave = "sesion";
-    CheckBox recordar;
     String usuarioEscrito;
     String contraseñaEscrito;
 
@@ -42,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         iniciar = findViewById(R.id.IniciarSesion);
         usuario = findViewById(R.id.UsuarioLogIn);
         contraseña = findViewById(R.id.ContraseñaLogIn);
-        recordar = findViewById(R.id.recordarcontraseña);
+
         usu = CrearCuenta.usuarios;
 
 
@@ -95,22 +91,5 @@ public class MainActivity extends AppCompatActivity {
             getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         }
     }
-/*
-    private boolean revisarSesion(){
-        boolean sesion = this.preferences.getBoolean(llave, false);
-        return false;
-    }
 
-    private void guardarSesion(boolean checked){
-        editor.putBoolean(llave,checked);
-        editor.apply();
-    }
-
-    private void inicializarElemento(){
-        preferences = this.getPreferences(Context.MODE_PRIVATE);
-        editor = preferences.edit();
-        recordar = findViewById(R.id.recordarcontraseña);
-    }
-
- */
 }

@@ -42,23 +42,6 @@
         app:layout_constraintTop_toBottomOf="@+id/UsuarioLogIn"
         app:layout_constraintVertical_bias="0.0" />
 
-    <TextView
-        android:id="@+id/olvidasteContraseña"
-        android:layout_width="260dp"
-        android:layout_height="30dp"
-        android:fontFamily="serif"
-        android:text="¿Olvidaste tu contraseña?"
-        android:textAlignment="textEnd"
-        android:textColor="@android:color/darker_gray"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/IniciarSesion"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.576"
-        app:layout_constraintStart_toStartOf="@+id/ContraseñaLogIn"
-        app:layout_constraintTop_toBottomOf="@+id/ContraseñaLogIn"
-        app:layout_constraintVertical_bias="0.675"
-        tools:ignore="MissingConstraints" />
-
     <Button
         android:id="@+id/IniciarSesion"
         android:layout_width="250dp"
@@ -115,18 +98,5 @@
         app:srcCompat="@drawable/comunidaddemadrid"
         tools:layout_editor_absoluteX="0dp"
         tools:srcCompat="@drawable/comunidaddemadrid" />
-
-    <CheckBox
-        android:id="@+id/recordarcontraseña"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:minHeight="48dp"
-        android:text="Recordarme"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/ContraseñaLogIn"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/ContraseñaLogIn"
-        app:layout_constraintTop_toBottomOf="@+id/ContraseñaLogIn"
-        app:layout_constraintVertical_bias="0.943" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

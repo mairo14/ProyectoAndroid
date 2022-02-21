@@ -86,14 +86,26 @@ public class ListadoRes extends AppCompatActivity {
         anteriorList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(pestaña ==0){
+
+                for (int i = 0; i < listado.size(); i++) {
+
+                    String titulo = listado.get(i).title;
+                    Double latParaArray = listado.get(i).latitude;
+                    Double lonParaArray = listado.get(i).longitude;
+                    arrayMapa.add(new Seleccionados(titulo, latParaArray, lonParaArray, tipo ));
+
+                }
+                if(pestaña == 2){
+
+                    GoMapa();
 
                 }else{
-                    pestaña --;
+                    pestaña++;
 
                     CrearLink(pestaña);
 
                 }
+
 
             }
         });
@@ -124,7 +136,7 @@ public class ListadoRes extends AppCompatActivity {
             tipoDeBusqueda.setText(tipo);
             double latitud = lati;
             double longitud = longi;
-            int distancia = 5000;
+            int distancia = 3000;
             String base = "https://datos.madrid.es/egob/catalogo/210227-0-piscinas-publicas.json?";
             String loc = "latitud=" + latitud +"&longitud="+ longitud+ "&distancia="+ distancia;
             LeerWS(base+loc+ "\n");
@@ -134,7 +146,7 @@ public class ListadoRes extends AppCompatActivity {
             tipoDeBusqueda.setText(tipo);
             double latitud = lati;
             double longitud = longi;
-            int distancia = 5000;
+            int distancia = 3000;
             String base = "https://datos.madrid.es/egob/catalogo/300048-0-ancianos-residencias-apartamento.json?";
             String loc = "latitud=" + latitud +"&longitud="+ longitud+ "&distancia="+ distancia;
             LeerWS(base+loc+ "\n");
@@ -144,7 +156,7 @@ public class ListadoRes extends AppCompatActivity {
             tipoDeBusqueda.setText(tipo);
             double latitud = lati;
             double longitud = longi;
-            int distancia = 5000;
+            int distancia = 3000;
             String base = "https://datos.madrid.es/egob/catalogo/205026-0-cementerios.json?";
             String loc = "latitud=" + latitud +"&longitud="+ longitud+ "&distancia="+ distancia;
             LeerWS(base+loc+ "\n");

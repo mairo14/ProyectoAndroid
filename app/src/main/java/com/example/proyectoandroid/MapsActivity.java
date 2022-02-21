@@ -70,7 +70,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         volver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i  = new Intent(MapsActivity.this , ListadoRes.class);
+                Intent i  = new Intent(MapsActivity.this , MarcarUbicacion.class);
                 startActivity(i);
             }
         });

@@ -139,7 +139,7 @@ public class MarcarUbicacion extends AppCompatActivity {
     public void MandarUbicacion (String direc, double latitud , double longitud ){
 
         contador ++;
-        if (contador<=1) {
+        if (contador==2) {
 
             Intent intent = new Intent(MarcarUbicacion.this, ListadoRes.class);
             intent.putExtra("direccion", direc);
