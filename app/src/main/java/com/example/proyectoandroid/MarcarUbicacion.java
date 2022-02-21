@@ -56,8 +56,8 @@ public class MarcarUbicacion extends AppCompatActivity {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION,}, 1000);
             return;
         }
-        mlocManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, (LocationListener) Local);
-        mlocManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, (LocationListener) Local);
+        mlocManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 10, (LocationListener) Local);
+        mlocManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 10, (LocationListener) Local);
         latitud = "Localización agregada";
         direccion = "";
     }
@@ -72,6 +72,7 @@ public class MarcarUbicacion extends AppCompatActivity {
     public void setLocation(Location loc) {
         //Obtener la direccion de la calle a partir de la latitud y la longitud
         if (loc.getLatitude() != 0.0 && loc.getLongitude() != 0.0) {
+            System.out.println("fdsfsdfds");
             try {
                 Geocoder geocoder = new Geocoder(this, Locale.getDefault());
                 List<Address> list = geocoder.getFromLocation(
@@ -81,7 +82,17 @@ public class MarcarUbicacion extends AppCompatActivity {
                     direccion = (DirCalle.getAddressLine(0));
 
                 }
-                MandarUbicacion(direccion, loc.getLatitude(), loc.getLongitude());
+
+
+
+                    Intent intent = new Intent(MarcarUbicacion.this, ListadoRes.class);
+                    intent.putExtra("direccion", direccion);
+                    intent.putExtra("longitud", loc.getLongitude());
+                    intent.putExtra("latitud", loc.getLatitude());
+                    startActivity(intent);
+
+
+               // MandarUbicacion(direccion, loc.getLatitude(), loc.getLongitude());
             } catch (IOException e) {
                 e.printStackTrace();
             }

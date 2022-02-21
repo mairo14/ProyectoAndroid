@@ -36,6 +36,7 @@ public class CrearCuenta extends AppCompatActivity {
         correoRegistro = findViewById(R.id.CorreoRegistro);
         contraseñaRegistro = findViewById(R.id.ContraseñaRegistro);
 
+        usuarios = MainActivity.usu;
 
         crearSesion.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,13 +49,16 @@ public class CrearCuenta extends AppCompatActivity {
 
 
               if(!nombre.equals("") && !apellido.equals("") && !usuario.equals("") && !correo.equals("")&& !contraseña.equals("")){
-                  usuarios.add(new Usuario(nombre, apellido, usuario,correo,contraseña));
+                  usuarios.get(0).setNombre(nombre);
+                  usuarios.get(0).setApellido(apellido);
+                  usuarios.get(0).setUsuario(usuario);
+                  usuarios.get(0).setCorreo(correo);
+                  usuarios.get(0).setContraseña(contraseña);
                   Toast.makeText(getApplicationContext(),"Usuario creado",Toast.LENGTH_LONG).show();
                   Intent i = new Intent(CrearCuenta.this,MainActivity.class);
                   startActivity(i);
-
               }else{
-
+                  Toast.makeText(getApplicationContext(),"Faltan datos",Toast.LENGTH_LONG).show();
 
               }
             }

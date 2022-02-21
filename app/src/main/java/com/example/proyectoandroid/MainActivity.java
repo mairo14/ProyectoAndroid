@@ -20,7 +20,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    ArrayList<Usuario> usu= new java.util.ArrayList<>();
+    static ArrayList<Usuario> usu= new java.util.ArrayList<>();
 
 
     Button Reg, iniciar;
@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
     EditText usuario;
     EditText contraseña;
+    int contador = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,13 +42,13 @@ public class MainActivity extends AppCompatActivity {
 
         usu = CrearCuenta.usuarios;
 
-
-
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setNavigationBarColor(getResources().getColor(R.color.black));
         }
-
+        if (contador ==1){
+            contador++;
+            usu.add(new Usuario("vacio","vacio","vacio","vacio","vacio"));
+        }
 
 
 
@@ -65,12 +66,20 @@ public class MainActivity extends AppCompatActivity {
         iniciar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                usuarioEscrito=    usuario.getText().toString();
-                contraseñaEscrito =   contraseña.getText().toString();
-
-                if(!usuarioEscrito.equals(usu.get(0).getUsuario()) || !contraseñaEscrito.equals(usu.get(0).getContraseña())){
+                usuarioEscrito=usuario.getText().toString();
+                contraseñaEscrito =contraseña.getText().toString();
+                usu = CrearCuenta.usuarios;
+                String usuarioVacio = "";
+                String contraseñaVacia = "";
+                if(usuarioEscrito.isEmpty() || contraseñaEscrito.isEmpty()){
                     Toast.makeText(MainActivity.this, "Contraseña o ususario invalidos", Toast.LENGTH_SHORT).show();
-                }else{
+                } if(usuarioEscrito.equals(usuarioVacio) || contraseñaEscrito.equals(contraseñaVacia)){
+                    Toast.makeText(MainActivity.this, "Contraseña o ususario invalidos", Toast.LENGTH_SHORT).show();
+                }if(!usuarioEscrito.equals(usu.get(0).getUsuario()) || !contraseñaEscrito.equals(usu.get(0).getContraseña())){
+                    Toast.makeText(MainActivity.this, "Contraseña o ususario invalidos", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
 
                     Intent i = new Intent(MainActivity.this ,MarcarUbicacion.class);
                     startActivity(i);
