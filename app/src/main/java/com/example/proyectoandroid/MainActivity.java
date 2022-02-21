@@ -42,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
         iniciar = findViewById(R.id.IniciarSesion);
         usuario = findViewById(R.id.UsuarioLogIn);
         contraseña = findViewById(R.id.ContraseñaLogIn);
-        recordar = findViewById(R.id.recordarcontraseña);
         usu = CrearCuenta.usuarios;
 
 

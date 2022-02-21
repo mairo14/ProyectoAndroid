@@ -21,9 +21,6 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".presentacion"
-            android:exported="false" />
-        <activity
             android:name=".MarcarUbicacion"
             android:exported="true" />
 
